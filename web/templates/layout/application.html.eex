@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <title>
+    David Padilla: Engineer, Manager, Rubyist, Speaker
+  </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/dabpadilla.rss" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+</head>
+<body data-no-turbolink>
+<div class="container">
+  <div class="row header hidden-xs">
+    <div class="col-md-11 col-md-offset-1">
+    <h1 id="david-padilla">David Padilla</h1>
+    <p class="lead">Engineer, Manager, Rubyist, Speaker</p>
+    </div>
+  </div>
 
-    <title>Hello Phoenix!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
-      </div>
-
-      <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger"><%= get_flash(@conn, :error) %></p>
-
+  <div class="row main">
+    <div class="col-md-10 col-md-offset-1">
       <%= @inner %>
+    </div>
+  </div>
 
-      <div class="footer">
-        <p><a href="http://phoenixframework.org">phoenixframework.org</a></p>
-      </div>
+  <footer class="col-md-12">
+    David Padilla, 2015
+    <br>
+    <a href="http://twitter.com/dabit">Twitter</a> |
+    <a href="http://www.github.com/dabit">Github</a> |
+    <a href="http://www.linkedin.com/in/dpadilla">LinkedIn</a>
+  </footer>
+</div>
 
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/app")</script>
-  </body>
+</body>
 </html>
