@@ -1,0 +1,10 @@
+<article class="post row">
+  <header>
+    <div class="title col-md-10">
+      <h1><%= @post.title %></h1>
+    </div>
+  </header>
+  <div class="body col-md-11 col-md-offset-1">
+    <%= @post.body %>
+  </div>
+</article>

@@ -31,4 +31,4 @@ config :blog, Blog.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "dab",
   password: "",
-  database: "blog_dev"
+  database: "blog1"
