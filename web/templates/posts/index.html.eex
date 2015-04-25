@@ -5,6 +5,6 @@
     </div>
   </header>
   <div class="body col-md-11 col-md-offset-1">
-    <%= @post.body %>
+    <%= safe Earmark.to_html @post.body %>
   </div>
 </article>
