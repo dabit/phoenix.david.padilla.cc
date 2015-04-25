@@ -47,6 +47,12 @@ defmodule Blog.Post do
     true
   end
 
+  def format_date(date) do
+    {:ok, date} = Ecto.DateTime.dump(date)
+    Timex.Date.from(date)
+    |> Timex.DateFormat.format!( "%B %e, %Y", :strftime)
+  end
+
   @required_fields ~w(title)
   @optional_fields ~w()
 
