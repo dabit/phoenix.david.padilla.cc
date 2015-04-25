@@ -4,8 +4,10 @@ defmodule Blog.PostsController do
   plug :action
 
   def index(conn, _params) do
-    post = List.first(Blog.Post.featured)
-    render conn, "index.html", post: post
+    post = Blog.Post.featured
+    more = Blog.Post.more_to_read
+
+    render conn, "index.html", post: post, more: more
   end
 
   def show(conn, %{"id" => id}) do

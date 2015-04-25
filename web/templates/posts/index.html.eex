@@ -3,8 +3,52 @@
     <div class="title col-md-10">
       <h1><%= @post.title %></h1>
     </div>
+
+    <%= unless @post.cms do %>
+      <div class="category col-md-10">
+        From my thoughts on <%= @post.category.name %> -
+        <%= if @post.state == "published" do %>
+          <%= @post.published_at %>
+        <% end %> -
+        <a href="<%= posts_path(@conn, :index) %>#disqus_thread">0 Comments</a>
+      </div>
+    <% end %>
   </header>
   <div class="body col-md-11 col-md-offset-1">
     <%= safe Earmark.to_html @post.body %>
   </div>
 </article>
+
+<%= if !@post.cms do %>
+  <div class="row">
+    <div class="more col-md-11 col-md-offset-1">
+      <h1>More stuff to read</h1>
+      <ul>
+        <%= for post <- @more do %>
+          <li class="more-link">
+            <h3><a href="#"><%= post.title %></a></h3>
+            <%= post.category.name %> - <%= post.published_at %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= if @post.state == "published" && !@post.cms do %>
+  <div class="row">
+    <div class="comments col-md-11 col-md-offset-1"/>
+    <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'david-padilla';
+
+        (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+<% end %>
