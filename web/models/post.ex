@@ -30,14 +30,26 @@ defmodule Blog.Post do
     List.first Blog.Repo.all query
   end
 
-  def more_to_read do
+  def more_to_read_past(current_post) do
     query = from p in Blog.Post,
       select: p,
       left_join: c in assoc(p, :category),
       offset: 1,
-      limit: 5,
+      limit: 3,
       preload: [category: c],
-      where: not p.cms and p.state == "published",
+      where: not p.cms and p.state == "published" and p.published_at < ^current_post.published_at,
+      order_by: [ desc: p.published_at ]
+
+    Blog.Repo.all query
+  end
+
+  def more_to_read_future(current_post) do
+    query = from p in Blog.Post,
+      select: p,
+      left_join: c in assoc(p, :category),
+      limit: 3,
+      preload: [category: c],
+      where: not p.cms and p.state == "published" and p.published_at > ^current_post.published_at,
       order_by: [ desc: p.published_at ]
 
     Blog.Repo.all query
@@ -51,6 +63,11 @@ defmodule Blog.Post do
     {:ok, date} = Ecto.DateTime.dump(date)
     Timex.Date.from(date)
     |> Timex.DateFormat.format!( "%B %e, %Y", :strftime)
+  end
+
+  def permalink_to_id(permalink) do
+    {id, _} = Integer.parse(permalink)
+    id
   end
 
   @required_fields ~w(title)

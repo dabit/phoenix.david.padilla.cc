@@ -19,14 +19,14 @@
   </div>
 </article>
 
-<%= if !@post.cms do %>
+<%= if !@post.cms && !Enum.empty?(@more) do %>
   <div class="row">
     <div class="more col-md-11 col-md-offset-1">
       <h1>More stuff to read</h1>
       <ul>
         <%= for post <- @more do %>
           <li class="more-link">
-            <h3><a href="#"><%= post.title %></a></h3>
+            <h3><a href="<%= show_post_path(@conn, post) %>"><%= post.title %></a></h3>
             <%= post.category.name %> - <%= Blog.Post.format_date(post.published_at) %>
           </li>
         <% end %>
@@ -52,3 +52,4 @@
     </div>
   </div>
 <% end %>
+

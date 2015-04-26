@@ -12,6 +12,15 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/dabpadilla.rss" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <%= render "analytics.html" %>
+  <script>
+  <%= if @push_state do %>
+    if (history && history.pushState) {
+      var stateObj = { module: 'blog' }
+      history.pushState(stateObj, "<%= @post.title %>", "<%= show_post_path(@conn, @post) %>");
+    }
+  <% end %>
+  </script>
 </head>
 <body data-no-turbolink>
 <div class="container">
