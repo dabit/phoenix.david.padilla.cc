@@ -10,7 +10,7 @@
         <%= if @post.state == "published" do %>
           <%= Blog.Post.format_date(@post.published_at) %>
         <% end %> -
-        <a href="<%= posts_path(@conn, :index) %>#disqus_thread">0 Comments</a>
+        <a href="<%= show_post_path(@conn, @post) %>#disqus_thread" data-disqus-identifier="<%= "#{@post.id}-#{@post.permalink}" %>">0 Comments</a>
       </div>
     <% end %>
   </header>

@@ -11,16 +11,6 @@
   <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/dabpadilla.rss" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-  <%= render "analytics.html" %>
-  <script>
-  <%= if @push_state do %>
-    if (history && history.pushState) {
-      var stateObj = { module: 'blog' }
-      history.pushState(stateObj, "<%= @post.title %>", "<%= show_post_path(@conn, @post) %>");
-    }
-  <% end %>
-  </script>
 </head>
 <body data-no-turbolink>
 <div class="container">
@@ -46,6 +36,34 @@
     <a href="http://www.linkedin.com/in/dpadilla">LinkedIn</a>
   </footer>
 </div>
+<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+<script>require("web/static/js/app")</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<%= render "analytics.html" %>
+<script>
+  <%= if @push_state do %>
+    if (history && history.pushState) {
+      var stateObj = { module: 'blog' }
+      history.pushState(stateObj, "<%= @post.title %>", "<%= show_post_path(@conn, @post) %>");
+    }
+  <% end %>
 
+  <%= if @post do %>
+    var disqus_identifier = '<%= "#{@post.id}-#{@post.permalink}" %>';
+  <% end %>
+
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+
+  $(document).ready(function() {
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 </body>
 </html>
