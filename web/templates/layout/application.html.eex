@@ -48,6 +48,8 @@
     }
   <% end %>
 
+  var disqus_shortname = 'david-padilla';
+
   <%= if @post do %>
     var disqus_identifier = '<%= "#{@post.id}-#{@post.permalink}" %>';
   <% end %>
