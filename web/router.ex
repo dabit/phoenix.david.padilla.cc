@@ -8,14 +8,15 @@ defmodule Blog.Router do
     plug :protect_from_forgery
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
+  #pipeline :api do
+    #plug :accepts, ["json"]
+  #end
 
   scope "/", Blog do
     pipe_through :browser # Use the default browser stack
 
     get "/", PostsController, :index
+    get "/about-me", AboutMeController, :show
     resources "/posts", PostsController, only: [ :show ]
   end
 

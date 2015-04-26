@@ -14,7 +14,9 @@ defmodule Blog.PostsController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Repo.get(Blog.Post, Blog.Post.permalink_to_id(id))
+    { post_id, _ } = Integer.parse(id)
+
+    post = Repo.get(Blog.Post, post_id)
             |> Repo.preload(:category)
 
     more_past   = Blog.Post.more_to_read_past(post)

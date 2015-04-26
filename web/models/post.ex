@@ -23,15 +23,24 @@ defmodule Blog.Post do
       select: p,
       left_join: c in assoc(p, :category),
       preload: [category: c],
-      where: not p.cms and p.state == "published",
       order_by: [ desc: p.published_at ]
+  end
+
+  def public_post(query) do
+    query = from p in query,
+      where: not p.cms and p.state == "published"
+  end
+
+  def static_post(query) do
+    query = from p in query,
+      where: p.cms and p.state == "published"
   end
 
   def featured do
     query = from p in post_query,
       limit: 1
 
-    query |> Blog.Repo.one
+    query |> public_post |> Blog.Repo.one
   end
 
   def more_to_read_past(current_post) do
@@ -40,7 +49,7 @@ defmodule Blog.Post do
       limit: 3,
       where: p.published_at < ^current_post.published_at
 
-    query |> Blog.Repo.all
+    query |> public_post|> Blog.Repo.all
   end
 
   def more_to_read_future(current_post) do
@@ -48,7 +57,14 @@ defmodule Blog.Post do
       limit: 3,
       where: p.published_at > ^current_post.published_at
 
-    query |> Blog.Repo.all
+    query |> public_post |> Blog.Repo.all
+  end
+
+  def static_page(link) do
+    query = from p in post_query,
+      where: p.permalink == ^link
+
+    query |> static_post |> Blog.Repo.one
   end
 
   def published do
@@ -59,11 +75,6 @@ defmodule Blog.Post do
     {:ok, date} = Ecto.DateTime.dump(date)
     Timex.Date.from(date)
     |> Timex.DateFormat.format!( "%B %e, %Y", :strftime)
-  end
-
-  def permalink_to_id(permalink) do
-    {id, _} = Integer.parse(permalink)
-    id
   end
 
   @required_fields ~w(title)
