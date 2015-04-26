@@ -18,41 +18,37 @@ defmodule Blog.Post do
     timestamps
   end
 
-  def featured do
+  def post_query do
     query = from p in Blog.Post,
       select: p,
       left_join: c in assoc(p, :category),
-      limit: 1,
       preload: [category: c],
       where: not p.cms and p.state == "published",
       order_by: [ desc: p.published_at ]
+  end
 
-    List.first Blog.Repo.all query
+  def featured do
+    query = from p in post_query,
+      limit: 1
+
+    query |> Blog.Repo.one
   end
 
   def more_to_read_past(current_post) do
-    query = from p in Blog.Post,
-      select: p,
-      left_join: c in assoc(p, :category),
+    query = from p in post_query,
       offset: 1,
       limit: 3,
-      preload: [category: c],
-      where: not p.cms and p.state == "published" and p.published_at < ^current_post.published_at,
-      order_by: [ desc: p.published_at ]
+      where: p.published_at < ^current_post.published_at
 
-    Blog.Repo.all query
+    query |> Blog.Repo.all
   end
 
   def more_to_read_future(current_post) do
-    query = from p in Blog.Post,
-      select: p,
-      left_join: c in assoc(p, :category),
+    query = from p in post_query,
       limit: 3,
-      preload: [category: c],
-      where: not p.cms and p.state == "published" and p.published_at > ^current_post.published_at,
-      order_by: [ desc: p.published_at ]
+      where: p.published_at > ^current_post.published_at
 
-    Blog.Repo.all query
+    query |> Blog.Repo.all
   end
 
   def published do
