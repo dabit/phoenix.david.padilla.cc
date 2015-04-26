@@ -67,8 +67,8 @@ defmodule Blog.Post do
     query |> static_post |> Blog.Repo.one
   end
 
-  def published do
-    true
+  def archive_posts do
+    post_query |> public_post |> Blog.Repo.all
   end
 
   def format_date(date) do

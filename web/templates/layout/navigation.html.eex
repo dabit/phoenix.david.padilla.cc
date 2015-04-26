@@ -3,9 +3,9 @@
     <div id="navigation">
       <a href="<%= posts_path(@conn, :index) %>">Home</a>
       |
-      <a href="#">Archive</a>
+      <a href="<%= archive_path(@conn, :index) %>">Archive</a>
       |
-      <a href="#">About</a>
+      <a href="<%= about_me_path(@conn, :show) %>">About</a>
     </div>
   </div>
 </div>
@@ -23,8 +23,8 @@
     <div class="collapse navbar-collapse" id="menu-collapse">
       <ul class="nav navbar-nav">
         <li><a href="<%= posts_path(@conn, :index) %>">Home</a></li>
-        <li><a href="#">Archive</a></li>
-        <li><a href="#">About Me</a></li>
+        <li><a href="<%= archive_path(@conn, :index) %>">Archive</a></li>
+        <li><a href="<%= about_me_path(@conn, :show) %>">About Me</a></li>
       </ul>
     </div>
   </div>

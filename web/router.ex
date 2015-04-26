@@ -17,6 +17,7 @@ defmodule Blog.Router do
 
     get "/", PostsController, :index
     get "/about-me", AboutMeController, :show
+    get "/archive", ArchiveController, :index
     resources "/posts", PostsController, only: [ :show ]
   end
 
