@@ -2,7 +2,16 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: 'js/app.js',
+      joinTo: {
+        'js/app.js': [
+          /web.static.vendor/,
+          /\/app\//
+        ],
+        'js/admin.js': [
+          /web.static.vendor/,
+          /\/admin\//
+        ]
+      },
       order: {
         before: [
           'web/static/vendor/jquery-2.1.3.js',
@@ -13,11 +22,11 @@ exports.config = {
     stylesheets: {
       joinTo: {
         'css/app.css': [
-          'web/static/vendor/bootstrap.css',
+          /web.static.vendor/,
           /\/app\//
          ],
         'css/admin.css': [
-          'web/static/vendor/bootstrap.css',
+          /web.static.vendor/,
           /\/admin\//
         ]
       },
