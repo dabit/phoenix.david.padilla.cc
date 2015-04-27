@@ -2,23 +2,24 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: 'js/app.js'
-      // To change the order of concatenation of files, explictly mention here
-      // https://github.com/brunch/brunch/tree/stable/docs#concatenation
-      // order: {
-      //   before: [
-      //     'web/static/vendor/js/jquery-2.1.1.js',
-      //     'web/static/vendor/js/bootstrap.min.js'
-      //   ]
-      // }
+      joinTo: 'js/app.js',
+      order: {
+        before: [
+          'web/static/vendor/jquery-2.1.3.js',
+          'web/static/vendor/bootstrap.js'
+        ]
+      }
     },
     stylesheets: {
       joinTo: {
-        'css/app.css': /\/app\//
+        'css/app.css': [
+          'web/static/vendor/bootstrap.css',
+          /\/app\//
+         ]
       },
       order: {
         before: [
-          'web/static/css/app/bootstrap.css'
+          'web/static/vendor/bootstrap.css'
         ]
       }
     },
