@@ -16,6 +16,6 @@ defmodule Blog.Admin.PostsView do
   end
 
   def delete_post_button(conn, post) do
-    link("Delete", to: admin_posts_path(conn, :delete, post.id), class: "btn btn-default btn-block")
+    link("Delete", to: admin_posts_path(conn, :delete, post.id), class: "btn btn-default btn-block", method: :delete)
   end
 end

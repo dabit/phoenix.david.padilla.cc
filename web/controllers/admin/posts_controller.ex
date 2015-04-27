@@ -27,4 +27,13 @@ defmodule Blog.Admin.PostsController do
       |> put_flash(:notice, "Post updated succesfully")
       |> render("edit.html", changeset: changeset)
   end
+
+  def delete(conn, %{"id" => id}) do
+    post = Repo.get(Blog.Post, id)
+    Repo.delete(post)
+
+    conn
+      |> put_flash(:notice, "Post deleted succesfully")
+      |> redirect(to: admin_posts_path(conn, :index))
+  end
 end
