@@ -7,7 +7,12 @@ defmodule Blog.Admin.PostsView do
   end
 
   def publish_post_button(post) do
-    link("Publish", to: "/", class: "btn btn-default btn-block btn-danger")
+    state_class = if Blog.Post.published?(post) do
+      "btn-danger"
+    else
+      "btn-success"
+    end
+    link("Publish", to: "/", class: "btn btn-default btn-block #{state_class}")
   end
 
   def delete_post_button(post) do

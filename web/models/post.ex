@@ -71,6 +71,15 @@ defmodule Blog.Post do
     post_query |> public_post |> Blog.Repo.all
   end
 
+  def admin_posts do
+    query = from p in Blog.Post,
+      order_by: [ asc: p.state, desc: p.id ]
+  end
+
+  def published?(post) do
+    post.state == "published"
+  end
+
   def format_date(date) do
     {:ok, date} = Ecto.DateTime.dump(date)
     Timex.Date.from(date)

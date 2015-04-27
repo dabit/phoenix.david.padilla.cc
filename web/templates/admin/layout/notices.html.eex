@@ -1,4 +1,7 @@
-<div class="alert alert-success">
-</div>
+<%= if get_flash(@conn, :notice) do %>
+  <div class="alert alert-success">
+    <%= get_flash(@conn, :notice) %>
+  </div>
+<% end %>
 <div class="alert">
 </div>

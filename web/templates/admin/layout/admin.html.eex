@@ -13,7 +13,7 @@
         <%= render "navbar.html" %>
       </div>
       <div class="row">
-        <%= render "notices.html" %>
+        <%= render "notices.html", conn: @conn %>
       </div>
     </div>
     <div class="container">
