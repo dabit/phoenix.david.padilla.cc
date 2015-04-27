@@ -21,10 +21,11 @@ defmodule Blog.Router do
     resources "/posts", PostsController, only: [ :show ]
   end
 
-  scope "/admin", Blog.Admin do
+  scope "admin", Blog.Admin, as: "admin" do
     pipe_through :browser
 
     get "/", PostsController, :index
+    resources "/posts", PostsController
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,10 @@
+<div class="col-xs-10 col-xs-offset-1">
+  <div class="form-group">
+    <label class="control-label">Title</label>
+    <%= text_input @f, :title, class: "form-control input-lg" %>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Body</label>
+    <%= textarea @f, :body, class: "form-control", rows: 20 %>
+  </div>
+</div>
