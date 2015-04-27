@@ -1,0 +1,7 @@
+<div class="page-header">
+  <h1>Posts</h1>
+  <a href="#">Click here for new post</a>
+</div>
+<%= for post <- @posts do %>
+  <%= render "post.html", conn: @conn, post: post %>
+<% end %>

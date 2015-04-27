@@ -15,7 +15,11 @@ exports.config = {
         'css/app.css': [
           'web/static/vendor/bootstrap.css',
           /\/app\//
-         ]
+         ],
+        'css/admin.css': [
+          'web/static/vendor/bootstrap.css',
+          /\/admin\//
+        ]
       },
       order: {
         before: [
