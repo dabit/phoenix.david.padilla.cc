@@ -3,7 +3,7 @@ defmodule Blog.Admin.StateController do
 
   plug :action
 
-  def show(conn, %{"posts_id" => id}) do
+  def update(conn, %{"posts_id" => id}) do
     Repo.get(Blog.Post, id)
       |> Blog.Post.toggle_state
       |> Repo.update

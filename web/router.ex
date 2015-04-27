@@ -26,7 +26,7 @@ defmodule Blog.Router do
 
     get "/", PostsController, :index
     resources "posts", PostsController do
-      resource "state", StateController, only: [:show]
+      resource "state", StateController, only: [:update]
     end
   end
 
