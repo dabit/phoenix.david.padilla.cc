@@ -73,7 +73,7 @@ defmodule Blog.Post do
 
   def admin_posts do
     query = from p in Blog.Post,
-      order_by: [ asc: p.state, desc: p.id ]
+      order_by: [ asc: p.state, desc: p.published_at, desc: p.id ]
   end
 
   def published?(post) do
@@ -84,6 +84,14 @@ defmodule Blog.Post do
     {:ok, date} = Ecto.DateTime.dump(date)
     Timex.Date.from(date)
     |> Timex.DateFormat.format!( "%B %e, %Y", :strftime)
+  end
+
+  def toggle_state(post) do
+    if Blog.Post.published?(post) do
+      %{ post | state: "drafted", published_at: nil }
+    else
+      %{ post | state: "published", published_at: Ecto.DateTime.local }
+    end
   end
 
   @required_fields ~w(title)

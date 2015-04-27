@@ -16,16 +16,18 @@ defmodule Blog.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PostsController, :index
-    get "/about-me", AboutMeController, :show
-    get "/archive", ArchiveController, :index
-    resources "/posts", PostsController, only: [ :show ]
+    get "about-me", AboutMeController, :show
+    get "archive", ArchiveController, :index
+    resources "posts", PostsController, only: [ :show ]
   end
 
   scope "admin", Blog.Admin, as: "admin" do
     pipe_through :browser
 
     get "/", PostsController, :index
-    resources "/posts", PostsController
+    resources "posts", PostsController do
+      resource "state", StateController, only: [:show]
+    end
   end
 
   # Other scopes may use custom stacks.
