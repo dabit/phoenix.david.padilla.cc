@@ -19,7 +19,7 @@ defmodule Blog.Post do
   end
 
   def post_query do
-    query = from p in Blog.Post,
+    from p in Blog.Post,
       select: p,
       left_join: c in assoc(p, :category),
       preload: [category: c],
@@ -27,12 +27,12 @@ defmodule Blog.Post do
   end
 
   def public_post(query) do
-    query = from p in query,
+    from p in query,
       where: not p.cms and p.state == "published"
   end
 
   def static_post(query) do
-    query = from p in query,
+    from p in query,
       where: p.cms and p.state == "published"
   end
 
@@ -72,7 +72,7 @@ defmodule Blog.Post do
   end
 
   def admin_posts do
-    query = from p in Blog.Post,
+    from p in Blog.Post,
       order_by: [ asc: p.state, desc: p.published_at, desc: p.id ]
   end
 
