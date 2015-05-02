@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">Miniblog</span>
+      <span class="navbar-brand">david.padilla.cc</span>
     </div>
 
     <div class="collapse navbar-collapse" id="main-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Posts</a></li>
+        <li><%= link "Posts", to: admin_posts_path(@conn, :index) %></li>
         <li><%= link "Log out", to: admin_sessions_path(@conn, :delete) %></li>
       </ul>
     </div>
