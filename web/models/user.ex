@@ -9,6 +9,19 @@ defmodule Blog.User do
     timestamps
   end
 
+  def authenticate?(email, password) do
+    query = from u in Blog.User,
+      where: u.email == ^email
+
+    user = Blog.Repo.one query
+
+    if user && password_correct?(user, password) do
+      user
+    else
+      nil
+    end
+  end
+
   def password_correct?(user, password) do
     checkpw(password, user.encrypted_password)
   end

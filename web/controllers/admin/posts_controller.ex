@@ -1,8 +1,18 @@
 defmodule Blog.Admin.PostsController do
   use Blog.Web, :controller
 
+  plug :authenticate
   plug :put_layout, "admin.html"
   plug :action
+
+  def authenticate(conn, _) do
+    user_id = get_session(conn, :user_id)
+    if user_id do
+      conn
+    else
+      redirect(conn, to: admin_sessions_path(conn, :new))
+    end
+  end
 
   def new(conn, _) do
     changeset = Blog.Post.changeset(%Blog.Post{})

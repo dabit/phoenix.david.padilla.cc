@@ -13,6 +13,7 @@
     <div class="collapse navbar-collapse" id="main-collapse">
       <ul class="nav navbar-nav">
         <li><a href="#">Posts</a></li>
+        <li><%= link "Log out", to: admin_sessions_path(@conn, :delete) %></li>
       </ul>
     </div>
   </div>

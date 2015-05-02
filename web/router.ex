@@ -25,6 +25,8 @@ defmodule Blog.Router do
     pipe_through :browser
 
     get "/", PostsController, :index
+    resource "sessions", SessionsController, only: [ :new, :create ]
+    get "log_out", SessionsController, :delete
     resources "posts", PostsController do
       resource "state", StateController, only: [:update]
     end
