@@ -17,7 +17,10 @@ defmodule Blog.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Blog, []},
-     applications: [:phoenix, :cowboy, :comeonin, :logger, :ecto, :earmark, :timex]]
+     applications: [
+       :phoenix, :cowboy, :comeonin, :logger, :ecto, :earmark, :timex,
+       :postgrex
+     ]]
   end
 
   # Specifies which paths to compile per environment
