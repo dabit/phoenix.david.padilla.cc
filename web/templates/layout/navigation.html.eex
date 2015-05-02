@@ -1,11 +1,11 @@
 <div class="row hidden-xs">
   <div class="col-xs-9 col-sm-10 col-sm-offset-2">
     <div id="navigation">
-      <a href="<%= posts_path(@conn, :index) %>">Home</a>
+      <%= link "Home", to: posts_path(@conn, :index) %>
       |
-      <a href="<%= archive_path(@conn, :index) %>">Archive</a>
+      <%= link "Archive", to: archive_path(@conn, :index) %>
       |
-      <a href="<%= about_me_path(@conn, :show) %>">About</a>
+      <%= link "About Me", to: about_me_path(@conn, :show) %>
     </div>
   </div>
 </div>
@@ -22,9 +22,9 @@
     </div>
     <div class="collapse navbar-collapse" id="menu-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="<%= posts_path(@conn, :index) %>">Home</a></li>
-        <li><a href="<%= archive_path(@conn, :index) %>">Archive</a></li>
-        <li><a href="<%= about_me_path(@conn, :show) %>">About Me</a></li>
+        <li><%= link "Home", to: posts_path(@conn, :index) %></li>
+        <li><%= link "Archive", to: archive_path(@conn, :index) %></li>
+        <li><%= link "About Me", to: about_me_path(@conn, :show) %></li>
       </ul>
     </div>
   </div>
