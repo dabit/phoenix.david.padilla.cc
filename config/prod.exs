@@ -8,7 +8,7 @@ use Mix.Config
 # meaningful, we use this information when generating URLs.
 config :blog, Blog.Endpoint,
   http: [port: 4000],
-  url: [host: "example.com"],
+  url: [host: "elixir.padilla.cc", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
@@ -33,7 +33,7 @@ config :logger, level: :info
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-#     config :phoenix, :serve_endpoints, true
+config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
