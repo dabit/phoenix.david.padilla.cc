@@ -3,7 +3,6 @@ defmodule Blog.Admin.PostsView do
 
   def edit_post_button(conn, post) do
     link("Edit", to: admin_posts_path(conn, :edit, post.id), class: "btn btn-default btn-block")
-
   end
 
   def publish_post_button(conn, post) do

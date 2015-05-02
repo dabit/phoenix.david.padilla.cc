@@ -3,6 +3,21 @@ defmodule Blog.Admin.PostsController do
 
   plug :action
 
+  def new(conn, _) do
+    changeset = Blog.Post.changeset(%Blog.Post{})
+    conn = put_layout conn, { Blog.Admin.LayoutView, "admin.html" }
+    render conn, "new.html", changeset: changeset
+  end
+
+  def create(conn, %{"post" => post}) do
+    Blog.Post.changeset(%Blog.Post{state: "draft"}, post)
+      |> Repo.insert
+
+    conn
+      |> put_flash(:notice, "Post created succesfully")
+      |> redirect(to: admin_posts_path(conn, :index))
+  end
+
   def index(conn, _) do
     conn = put_layout conn, { Blog.Admin.LayoutView, "admin.html" }
     posts = Repo.all Blog.Post.admin_posts

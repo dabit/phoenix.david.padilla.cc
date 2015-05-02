@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>Posts</h1>
-  <a href="#">Click here for new post</a>
+  <%= link "Click here for new post", to: admin_posts_path(@conn, :new) %>
 </div>
 <%= for post <- @posts do %>
   <%= render "post.html", conn: @conn, post: post %>
