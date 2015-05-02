@@ -3,5 +3,5 @@
     <%= get_flash(@conn, :notice) %>
   </div>
 <% end %>
-<div class="alert">
-</div>
+<%#<div class="alert">%>
+<%#</div>%>
