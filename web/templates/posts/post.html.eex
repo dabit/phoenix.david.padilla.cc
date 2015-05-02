@@ -19,7 +19,7 @@
   </div>
 </article>
 
-<%= if !@post.cms && !Enum.empty?(@more) do %>
+<%= if Blog.Post.published?(@post) && !@post.cms && !Enum.empty?(@more) do %>
   <div class="row">
     <div class="more col-md-11 col-md-offset-1">
       <h1>More stuff to read</h1>
@@ -33,9 +33,6 @@
       </ul>
     </div>
   </div>
-<% end %>
-
-<%= if @post.state == "published" && !@post.cms do %>
   <div class="row">
     <div class="comments col-md-11 col-md-offset-1"/>
     <div id="disqus_thread"></div>

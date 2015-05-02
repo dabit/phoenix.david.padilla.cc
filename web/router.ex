@@ -29,6 +29,7 @@ defmodule Blog.Router do
     get "log_out", SessionsController, :delete
     resources "posts", PostsController do
       resource "state", StateController, only: [:update]
+      resource "preview", PreviewsController, only: [:show]
     end
   end
 

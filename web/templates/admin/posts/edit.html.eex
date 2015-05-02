@@ -10,7 +10,7 @@
       <%= submit "Update", class: "btn btn-primary btn-block" %>
     </div>
     <div class="col-xs-3 col-sm-2">
-      <%= link "Preview", to: "#", class: "btn btn-default btn-block" %>
+      <%= link "Preview", to: admin_posts_previews_path(@conn, :show, @changeset.model.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-xs-3 col-sm-2">
       <%= link "Go Back", to: admin_posts_path(@conn, :index), class: "btn btn-default btn-block" %>
