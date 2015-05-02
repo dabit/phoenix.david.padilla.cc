@@ -30,11 +30,12 @@ defmodule Blog.Mixfile do
   defp deps do
     [{:phoenix, "~> 0.12"},
      {:phoenix_ecto, "~> 0.3"},
+     {:earmark, "~> 0.1.8"},
+     {:exrm, "~> 0.14.16"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 0.3"},
      {:comeonin, "~> 0.8"},
      {:cowboy, "~> 1.0"},
-     {:timex, "~> 0.13.4"},
-     {:earmark, "~> 0.1.8"}]
+     {:timex, "~> 0.13.4"}]
   end
 end
