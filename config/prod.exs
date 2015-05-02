@@ -7,7 +7,7 @@ use Mix.Config
 # You should also configure the url host to something
 # meaningful, we use this information when generating URLs.
 config :blog, Blog.Endpoint,
-  http: [port: {:system, "PORT"}],
+  http: [port: 4000],
   url: [host: "example.com"],
   cache_static_manifest: "priv/static/manifest.json"
 
