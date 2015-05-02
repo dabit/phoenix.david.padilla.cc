@@ -10,10 +10,10 @@
   <body>
     <div class="container">
       <div class="row">
-        <%= render "navbar.html" %>
+        <%= render Blog.Admin.SharedView, "navbar.html", conn: @conn %>
       </div>
       <div class="row">
-        <%= render "notices.html", conn: @conn %>
+        <%= render Blog.Admin.SharedView, "notices.html", conn: @conn %>
       </div>
     </div>
     <div class="container">
