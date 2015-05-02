@@ -94,8 +94,8 @@ defmodule Blog.Post do
     end
   end
 
-  @required_fields ~w(title)
-  @optional_fields ~w()
+  @required_fields ~w(title category_id)
+  @optional_fields ~w(body)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

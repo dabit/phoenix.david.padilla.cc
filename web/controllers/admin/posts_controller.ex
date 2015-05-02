@@ -16,7 +16,8 @@ defmodule Blog.Admin.PostsController do
 
   def new(conn, _) do
     changeset = Blog.Post.changeset(%Blog.Post{})
-    render conn, "new.html", changeset: changeset
+    categories = Blog.Category.options_for_select
+    render conn, "new.html", changeset: changeset, categories: categories
   end
 
   def create(conn, %{"post" => post}) do
@@ -35,19 +36,24 @@ defmodule Blog.Admin.PostsController do
 
   def edit(conn, %{"id" => id}) do
     changeset = Repo.get(Blog.Post, id)
+            |> Blog.Repo.preload(:category)
             |> Blog.Post.changeset
-    render conn, "edit.html", changeset: changeset
+
+    categories = Blog.Category.options_for_select
+    render conn, "edit.html", changeset: changeset, categories: categories
   end
 
-  def update(conn, %{"id" => id, "post" => post}) do
-    changeset = Repo.get(Blog.Post, id)
-            |> Blog.Post.changeset(post)
+  def update(conn, %{"id" => id, "post" => post_params}) do
+    post = Repo.get(Blog.Post, id)
+    changeset = Blog.Post.changeset(post, post_params)
 
     Repo.update changeset
 
+    categories = Blog.Category.options_for_select
+
     conn
       |> put_flash(:notice, "Post updated succesfully")
-      |> render("edit.html", changeset: changeset)
+      |> render("edit.html", changeset: changeset, categories: categories)
   end
 
   def delete(conn, %{"id" => id}) do
