@@ -45,7 +45,6 @@ defmodule Blog.Post do
 
   def more_to_read_past(current_post) do
     query = from p in post_query,
-      offset: 1,
       limit: 3,
       where: p.published_at < ^current_post.published_at
 
