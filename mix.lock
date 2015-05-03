@@ -15,4 +15,5 @@
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "postgrex": {:hex, :postgrex, "0.8.1"},
   "ranch": {:hex, :ranch, "1.0.0"},
-  "timex": {:hex, :timex, "0.13.4"}}
+  "timex": {:hex, :timex, "0.13.4"},
+  "xml_builder": {:hex, :xml_builder, "0.0.5"}}

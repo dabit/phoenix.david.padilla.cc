@@ -19,7 +19,7 @@ defmodule Blog.Mixfile do
     [mod: {Blog, []},
      applications: [
        :phoenix, :phoenix_ecto, :cowboy, :comeonin, :logger, :ecto, :earmark, :timex,
-       :postgrex
+       :postgrex, :xml_builder
      ]]
   end
 
@@ -39,6 +39,9 @@ defmodule Blog.Mixfile do
      {:phoenix_live_reload, "~> 0.3"},
      {:comeonin, "~> 0.8"},
      {:cowboy, "~> 1.0"},
-     {:timex, "~> 0.13.4"}]
+     {:timex, "~> 0.13.4"},
+     {:xml_builder, "~> 0.0.5"}
+   ]
+
   end
 end

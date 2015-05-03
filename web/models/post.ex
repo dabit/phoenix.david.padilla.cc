@@ -93,6 +93,16 @@ defmodule Blog.Post do
     end
   end
 
+  def permalink(post) do
+    "#{post.id}-#{post.permalink}"
+  end
+
+  def sitemap_date(date) do
+    {:ok, date} = Ecto.DateTime.dump(date)
+    Timex.Date.from(date)
+    |> Timex.DateFormat.format!( "%Y-%m-%dT%H:%M%:z", :strftime)
+  end
+
   @required_fields ~w(title category_id author_id)
   @optional_fields ~w(body)
 

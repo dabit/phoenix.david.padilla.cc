@@ -8,6 +8,9 @@ defmodule Blog.Router do
     plug :protect_from_forgery
   end
 
+  pipeline :sitemap do
+    plug :accepts, ["xml"]
+  end
   #pipeline :api do
     #plug :accepts, ["json"]
   #end
@@ -21,6 +24,11 @@ defmodule Blog.Router do
     resources "posts", PostsController, only: [ :show ]
   end
 
+  scope "/", Blog do
+    pipe_through :sitemap
+    get "sitemap.xml", SitemapController, :show
+  end
+
   scope "admin", Blog.Admin, as: "admin" do
     pipe_through :browser
 
@@ -32,6 +40,7 @@ defmodule Blog.Router do
       resource "preview", PreviewsController, only: [:show]
     end
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", Blog do

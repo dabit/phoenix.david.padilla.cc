@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc><%= archive_url(@conn, :index) %></loc>
+    <lastmod><%= Blog.Post.sitemap_date(@last_post.published_at) %></lastmod>
+  </url>
+  <url>
+    <loc><%= about_me_url(@conn, :show) %></loc>
+    <lastmod><%= Blog.Post.sitemap_date(@about.published_at) %></lastmod>
+  </url>
+  <%= for post <- @posts do %>
+  <url>
+    <loc><%= posts_url(@conn, :show, Blog.Post.permalink(post)) %></loc>
+    <lastmod><%= Blog.Post.sitemap_date(post.published_at) %></lastmod>
+  </url>
+  <% end %>
+</urlset>
+
