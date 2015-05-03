@@ -9,7 +9,7 @@ defmodule Blog.Admin.PreviewsController do
     if user_id do
       conn
     else
-      redirect(conn, to: admin_sessions_path(conn, :new))
+      conn |> redirect(to: admin_sessions_path(conn, :new)) |> halt
     end
   end
 
