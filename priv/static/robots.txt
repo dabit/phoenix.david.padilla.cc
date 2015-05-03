@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /
+
+User-agent: *
+Allow: /$
+
+User-agent: *
+Allow: /posts
+
+User-agent: *
+Allow: /archive
+
+User-agent: *
+Allow: /about-me
+
+User-agent: *
+Allow: /sitemap.xml
+
+User-agent: *
+Allow: /assets
