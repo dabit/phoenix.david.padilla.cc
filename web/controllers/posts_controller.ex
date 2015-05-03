@@ -8,7 +8,7 @@ defmodule Blog.PostsController do
     more_past   = Blog.Post.more_to_read_past(post)
     more_future = Blog.Post.more_to_read_future(post)
 
-    more = Enum.concat(more_past, more_future)
+    more = Enum.concat(more_future, more_past)
 
     render conn, "post.html", post: post, more: more, push_state: true
   end
