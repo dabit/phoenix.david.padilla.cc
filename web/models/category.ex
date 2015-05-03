@@ -14,7 +14,7 @@ defmodule Blog.Category do
   end
 
   def sorted do
-    query = from c in Blog.Category,
+    from c in Blog.Category,
       order_by: [asc: c.name]
   end
 end
