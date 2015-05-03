@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>Edit Post</h1>
 </div>
-<%= form_for @changeset, admin_posts_path(@conn, :update, @changeset.model.id), fn f -> %>
+<%= form_for @changeset, admin_posts_path(@conn, :update, @post.id), fn f -> %>
   <div class="row">
     <%= render "form.html", f: f, categories: @categories %>
   </div>
@@ -10,7 +10,7 @@
       <%= submit "Update", class: "btn btn-primary btn-block" %>
     </div>
     <div class="col-xs-3 col-sm-2">
-      <%= link "Preview", to: admin_posts_previews_path(@conn, :show, @changeset.model.id), class: "btn btn-default btn-block" %>
+      <%= link "Preview", to: admin_posts_previews_path(@conn, :show, @post.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-xs-3 col-sm-2">
       <%= link "Go Back", to: admin_posts_path(@conn, :index), class: "btn btn-default btn-block" %>

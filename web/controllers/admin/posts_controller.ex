@@ -1,8 +1,12 @@
 defmodule Blog.Admin.PostsController do
   use Blog.Web, :controller
 
+  alias Blog.Post
+  alias Blog.Category
+
   plug :authenticate
   plug :put_layout, "admin.html"
+  plug :scrub_params, "post" when action in [:create, :update]
   plug :action
 
   def authenticate(conn, _) do
@@ -15,13 +19,13 @@ defmodule Blog.Admin.PostsController do
   end
 
   def new(conn, _) do
-    changeset = Blog.Post.changeset(%Blog.Post{})
-    categories = Blog.Category.options_for_select
+    changeset  = Post.changeset(%Post{})
+    categories = Category.options_for_select
     render conn, "new.html", changeset: changeset, categories: categories
   end
 
   def create(conn, %{"post" => post}) do
-    Blog.Post.changeset(%Blog.Post{state: "draft"}, post)
+    Post.changeset(%Post{state: "draft"}, post)
       |> Repo.insert
 
     conn
@@ -30,34 +34,34 @@ defmodule Blog.Admin.PostsController do
   end
 
   def index(conn, _) do
-    posts = Repo.all Blog.Post.admin_posts
+    posts = Repo.all Post.admin_posts
     render conn, "index.html", posts: posts
   end
 
   def edit(conn, %{"id" => id}) do
-    changeset = Repo.get(Blog.Post, id)
-            |> Blog.Repo.preload(:category)
-            |> Blog.Post.changeset
+    post      = Repo.get(Post, id)
+    changeset = Repo.preload(post, :category)
+      |> Post.changeset
 
-    categories = Blog.Category.options_for_select
-    render conn, "edit.html", changeset: changeset, categories: categories
+    categories = Category.options_for_select
+    render conn, "edit.html", changeset: changeset, post: post, categories: categories
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
-    post = Repo.get(Blog.Post, id)
-    changeset = Blog.Post.changeset(post, post_params)
+    post      = Repo.get(Post, id)
+    changeset = Post.changeset(post, post_params)
 
     Repo.update changeset
 
-    categories = Blog.Category.options_for_select
+    categories = Category.options_for_select
 
     conn
       |> put_flash(:notice, "Post updated succesfully")
-      |> render("edit.html", changeset: changeset, categories: categories)
+      |> render("edit.html", changeset: changeset, categories: categories, post: post)
   end
 
   def delete(conn, %{"id" => id}) do
-    post = Repo.get(Blog.Post, id)
+    post = Repo.get(Post, id)
     Repo.delete(post)
 
     conn
