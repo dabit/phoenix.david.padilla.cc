@@ -3,6 +3,7 @@ defmodule Blog.Admin.PostsController do
 
   alias Blog.Post
   alias Blog.Category
+  alias Blog.User
 
   plug :authenticate
   plug :put_layout, "admin.html"
@@ -12,7 +13,8 @@ defmodule Blog.Admin.PostsController do
   def authenticate(conn, _) do
     user_id = get_session(conn, :user_id)
     if user_id do
-      conn
+      user = Repo.get User, user_id
+      conn |> Map.put(:current_user, user)
     else
       conn |> redirect(to: admin_sessions_path(conn, :new)) |> halt
     end
@@ -25,7 +27,7 @@ defmodule Blog.Admin.PostsController do
   end
 
   def create(conn, %{"post" => post}) do
-    Post.changeset(%Post{state: "draft"}, post)
+    Post.changeset(%Post{state: "draft", author_id: conn.current_user.id}, post)
       |> Repo.insert
 
     conn

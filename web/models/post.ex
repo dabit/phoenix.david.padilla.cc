@@ -3,12 +3,12 @@ defmodule Blog.Post do
 
   schema "miniblog_posts" do
     belongs_to :category, Blog.Category
+    belongs_to :author, Blog.User
 
     field :title, :string
     field :body, :string
     field :permalink, :string
     field :published_at, Ecto.DateTime
-    field :author_id, :integer
     field :state, :string
     field :publisher_id, :integer
     field :ready_for_review, :boolean
@@ -94,7 +94,7 @@ defmodule Blog.Post do
     end
   end
 
-  @required_fields ~w(title category_id)
+  @required_fields ~w(title category_id author_id)
   @optional_fields ~w(body)
 
   @doc """
