@@ -8,7 +8,7 @@ use Mix.Config
 # meaningful, we use this information when generating URLs.
 config :blog, Blog.Endpoint,
   http: [port: 4000],
-  url: [host: "elixir.padilla.cc", port: 80],
+  url: [host: "david.padilla.cc", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
