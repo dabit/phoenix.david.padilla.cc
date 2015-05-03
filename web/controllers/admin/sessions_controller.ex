@@ -12,7 +12,7 @@ defmodule Blog.Admin.SessionsController do
     if user = Blog.User.authenticate?(session["email"], session["password"]) do
       conn
         |> put_session(:user_id, user.id)
-        |> redirect(to: admin_posts_path(conn, :index))
+        |> redirect(to: admin_posts_path(:index))
     end
     render conn, "new.html", session: session
   end
