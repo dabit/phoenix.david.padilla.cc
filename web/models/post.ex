@@ -79,12 +79,6 @@ defmodule Blog.Post do
     post.state == "published"
   end
 
-  def format_date(date) do
-    {:ok, date} = Ecto.DateTime.dump(date)
-    Timex.Date.from(date)
-    |> Timex.DateFormat.format!( "%B %e, %Y", :strftime)
-  end
-
   def toggle_state(post) do
     if Blog.Post.published?(post) do
       %{ post | state: "drafted", published_at: nil }
@@ -95,12 +89,6 @@ defmodule Blog.Post do
 
   def permalink(post) do
     "#{post.id}-#{post.permalink}"
-  end
-
-  def sitemap_date(date) do
-    {:ok, date} = Ecto.DateTime.dump(date)
-    Timex.Date.from(date)
-    |> Timex.DateFormat.format!( "%Y-%m-%dT%H:%M%:z", :strftime)
   end
 
   @required_fields ~w(title category_id author_id)

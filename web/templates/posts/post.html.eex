@@ -8,7 +8,7 @@
       <div class="category col-md-10">
         From my thoughts on <%= @post.category.name %> -
         <%= if @post.state == "published" do %>
-          <%= Blog.Post.format_date(@post.published_at) %>
+          <%= Blog.DateFormatter.post(@post.published_at) %>
         <% end %> -
         <a href="<%= show_post_path(@conn, @post) %>#disqus_thread" data-disqus-identifier="<%= "#{@post.id}-#{@post.permalink}" %>">0 Comments</a>
       </div>
@@ -27,7 +27,7 @@
         <%= for post <- @more do %>
           <li class="more-link">
             <h3><a href="<%= show_post_path(@conn, post) %>"><%= post.title %></a></h3>
-            <%= post.category.name %> - <%= Blog.Post.format_date(post.published_at) %>
+            <%= post.category.name %> - <%= Blog.DateFormatter.post(post.published_at) %>
           </li>
         <% end %>
       </ul>
