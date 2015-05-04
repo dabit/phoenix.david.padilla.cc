@@ -83,7 +83,7 @@ defmodule Blog.Post do
     if Blog.Post.published?(post) do
       %{ post | state: "drafted", published_at: nil }
     else
-      %{ post | state: "published", published_at: Ecto.DateTime.local }
+      %{ post | state: "published", published_at: Ecto.DateTime.local, permalink: set_permalink(post.title) }
     end
   end
 
@@ -91,8 +91,13 @@ defmodule Blog.Post do
     "#{post.id}-#{post.permalink}"
   end
 
+  def set_permalink(title) do
+    String.downcase(title)
+    |> String.replace(" ", "-")
+  end
+
   @required_fields ~w(title category_id author_id)
-  @optional_fields ~w(body)
+  @optional_fields ~w(body permalink)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
