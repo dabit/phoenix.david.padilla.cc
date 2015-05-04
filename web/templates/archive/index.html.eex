@@ -1,7 +1,7 @@
 <h1>Archive</h1>
 <ul class="archive-link">
   <%= for post <- @posts do %>
-    <li class="more-link">
+    <li class="archive-link">
     <h3><a href="<%= show_post_path(@conn, post) %>"><%= post.title %></a></h3>
     <%= post.category.name %> - <%= Blog.Post.format_date(post.published_at) %>
     </li>
