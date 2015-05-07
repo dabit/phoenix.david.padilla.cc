@@ -26,8 +26,9 @@ defmodule Blog.Admin.PostsController do
     render conn, "new.html", changeset: changeset, categories: categories
   end
 
-  def create(conn, %{"post" => post}) do
-    Post.changeset(%Post{state: "draft", author_id: conn.current_user.id}, post)
+  def create(conn, %{"post" => post_params}) do
+    post_params = Map.put(post_params, "html_body", Earmark.to_html(post_params["body"]))
+    Post.changeset(%Post{state: "draft", author_id: conn.current_user.id}, post_params)
       |> Repo.insert
 
     conn
@@ -50,8 +51,9 @@ defmodule Blog.Admin.PostsController do
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
-    post      = Repo.get(Post, id)
-    changeset = Post.changeset(post, post_params)
+    post        = Repo.get(Post, id)
+    post_params = Map.put(post_params, "html_body", Earmark.to_html(post_params["body"]))
+    changeset   = Post.changeset(post, post_params)
 
     Repo.update changeset
 

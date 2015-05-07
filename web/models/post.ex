@@ -14,6 +14,7 @@ defmodule Blog.Post do
     field :ready_for_review, :boolean
     field :marked_for_review_at, :datetime
     field :cms, :boolean, default: false
+    field :html_body, :string
 
     timestamps
   end
@@ -97,7 +98,7 @@ defmodule Blog.Post do
   end
 
   @required_fields ~w(title category_id author_id)
-  @optional_fields ~w(body permalink)
+  @optional_fields ~w(body html_body permalink)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
