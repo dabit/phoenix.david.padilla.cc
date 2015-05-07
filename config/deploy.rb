@@ -50,6 +50,14 @@ task :assets do
   end
 end
 
+task :migrations do
+  on roles(:web) do |host|
+    within(current_path) do
+      execute(:mix, "ecto.migrate")
+    end
+  end
+end
+
 task :start do
   on roles(:web) do |host|
     within("#{current_path}/rel/blog/bin") do
