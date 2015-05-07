@@ -3,7 +3,7 @@
   <%= for post <- @posts do %>
     <li class="archive-link">
     <h3><a href="<%= show_post_path(@conn, post) %>"><%= post.title %></a></h3>
-    <%= post.category.name %> - <%= Blog.Post.format_date(post.published_at) %>
+    <%= post.category.name %> - <%= Blog.DateFormatter.post(post.published_at) %>
     </li>
   <% end %>
 </ul>
