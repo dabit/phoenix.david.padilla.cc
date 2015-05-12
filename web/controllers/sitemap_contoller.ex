@@ -11,7 +11,7 @@ defmodule Blog.SitemapController do
   def show(conn, _) do
     about = Blog.Post.static_page("about-me")
     posts = Post.archive_posts
-    last_post = List.last(posts)
+    last_post = List.first(posts)
 
     render conn, "index.xml", posts: posts, last_post: last_post, about: about
   end
