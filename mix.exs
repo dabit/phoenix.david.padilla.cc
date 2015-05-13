@@ -19,7 +19,7 @@ defmodule Blog.Mixfile do
     [mod: {Blog, []},
      applications: [
        :phoenix, :phoenix_ecto, :cowboy, :comeonin, :logger, :ecto, :earmark, :timex,
-       :postgrex, :xml_builder
+       :postgrex, :xml_builder, :phoenix_html
      ]]
   end
 
