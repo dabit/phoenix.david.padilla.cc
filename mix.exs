@@ -31,12 +31,13 @@ defmodule Blog.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.12"},
-     {:phoenix_ecto, "~> 0.3"},
+    [{:phoenix, "~> 0.13"},
+     {:phoenix_ecto, "~> 0.4"},
+     {:phoenix_html, "~> 1.0"},
      {:earmark, "~> 0.1.8"},
      {:exrm, "~> 0.14.16"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_live_reload, "~> 0.3"},
+     {:phoenix_live_reload, "~> 0.4"},
      {:comeonin, "~> 0.8"},
      {:cowboy, "~> 1.0"},
      {:timex, "~> 0.13.4"},

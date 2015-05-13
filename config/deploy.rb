@@ -41,6 +41,14 @@ task :build do
   end
 end
 
+task :clean do
+  on roles(:web) do |host|
+    within(current_path) do
+      execute(:mix, "deps.clean", "--all")
+    end
+  end
+end
+
 task :assets do
   on roles(:web) do |host|
     within(current_path) do
