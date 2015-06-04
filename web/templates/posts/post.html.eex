@@ -22,7 +22,7 @@
 <%= if Blog.Post.published?(@post) && !@post.cms && !Enum.empty?(@more) do %>
   <div class="row">
     <div class="more col-md-11 col-md-offset-1">
-      <h1>More stuff to read</h1>
+      <h1>More to read</h1>
       <ul>
         <%= for post <- @more do %>
           <li class="more-link">
