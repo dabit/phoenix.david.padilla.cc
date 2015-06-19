@@ -9,7 +9,7 @@ defmodule Blog.Category do
 
   def options_for_select do
     Blog.Repo.all(sorted)
-      |> Enum.map(fn(c) -> ["#{c.id}": c.name] end)
+      |> Enum.map(fn(c) -> [ "#{c.name}": c.id ] end)
       |> List.flatten
   end
 
