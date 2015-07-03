@@ -15,7 +15,7 @@
     <% end %>
   </header>
   <div class="body col-md-11 col-md-offset-1">
-    <%= safe @post.html_body %>
+    <%= raw @post.html_body %>
   </div>
 </article>
 

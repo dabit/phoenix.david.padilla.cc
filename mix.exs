@@ -33,7 +33,7 @@ defmodule Blog.Mixfile do
   defp deps do
     [{:phoenix, "~> 0.14"},
      {:phoenix_ecto, "~> 0.4"},
-     {:phoenix_html, "~> 1.1"},
+     {:phoenix_html, "~> 1.2.1"},
      {:earmark, "~> 0.1.8"},
      {:exrm, "~> 0.14.16"},
      {:postgrex, ">= 0.0.0"},
