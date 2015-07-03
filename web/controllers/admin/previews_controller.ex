@@ -2,7 +2,6 @@ defmodule Blog.Admin.PreviewsController do
   use Blog.Web, :controller
 
   plug :authenticate
-  plug :action
 
   def authenticate(conn, _) do
     user_id = get_session(conn, :user_id)

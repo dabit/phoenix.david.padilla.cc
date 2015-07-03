@@ -1,8 +1,6 @@
 defmodule Blog.PostsController do
   use Blog.Web, :controller
 
-  plug :action
-
   def index(conn, _params) do
     post        = Blog.Post.featured
     more_past   = Blog.Post.more_to_read_past(post)

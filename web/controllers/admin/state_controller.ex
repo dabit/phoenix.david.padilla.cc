@@ -1,8 +1,6 @@
 defmodule Blog.Admin.StateController do
   use Blog.Web, :controller
 
-  plug :action
-
   def update(conn, %{"posts_id" => id}) do
     Repo.get(Blog.Post, id)
       |> Blog.Post.toggle_state

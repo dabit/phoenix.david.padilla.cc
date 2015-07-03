@@ -5,8 +5,6 @@ defmodule Blog.SitemapController do
 
   plug :accepts, ["xml"]
   plug :put_resp_content_type, "xml"
-  plug :action
-
 
   def show(conn, _) do
     about = Blog.Post.static_page("about-me")

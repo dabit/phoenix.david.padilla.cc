@@ -8,7 +8,6 @@ defmodule Blog.Admin.PostsController do
   plug :authenticate
   plug :put_layout, "admin.html"
   plug :scrub_params, "post" when action in [:create, :update]
-  plug :action
 
   def authenticate(conn, _) do
     user_id = get_session(conn, :user_id)

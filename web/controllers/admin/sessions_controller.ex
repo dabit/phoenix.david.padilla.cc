@@ -2,7 +2,6 @@ defmodule Blog.Admin.SessionsController do
   use Blog.Web, :controller
 
   plug :put_layout, "admin.html"
-  plug :action
 
   def new(conn, _) do
     render conn, "new.html"
