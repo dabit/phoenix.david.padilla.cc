@@ -41,7 +41,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 <%= render "analytics.html" %>
 <script>
-  <%= if @push_state do %>
+  <%= if assigns[:push_state] do %>
     if (history && history.pushState) {
       var stateObj = { module: 'blog' }
       history.pushState(stateObj, "<%= @post.title %>", "<%= show_post_path(@conn, @post) %>");
