@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/dabpadilla.rss" />
+  <%= render "analytics.html" %>
 </head>
 <body data-no-turbolink>
 <div class="container">
@@ -39,7 +40,6 @@
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 <script>require("web/static/js/app")</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-<%= render "analytics.html" %>
 <script>
   <%= if assigns[:push_state] do %>
     if (history && history.pushState) {
