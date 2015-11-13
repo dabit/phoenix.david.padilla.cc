@@ -35,12 +35,12 @@ defmodule Blog.Mixfile do
      {:phoenix_ecto, "~> 0.4"},
      {:phoenix_html, "~> 1.2.1"},
      {:earmark, "~> 0.1.8"},
-     {:exrm, "~> 0.14.16"},
+     {:exrm, "~> 0.19.9"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 0.4.3"},
      {:comeonin, "~> 0.8"},
      {:cowboy, "~> 1.0"},
-     {:timex, "~> 0.13.4"},
+     {:timex, "~> 0.19.2"},
      {:xml_builder, "~> 0.0.5"}
    ]
 
