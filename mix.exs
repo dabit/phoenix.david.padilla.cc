@@ -31,9 +31,9 @@ defmodule Blog.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.15.0"},
-     {:phoenix_ecto, "~> 0.8.0"},
-     {:phoenix_html, "~> 1.4.0"},
+    [{:phoenix, "~> 0.16.0"},
+     {:phoenix_ecto, "~> 0.9.0"},
+     {:phoenix_html, "~> 2.0.0"},
      {:earmark, "~> 0.1.8"},
      {:exrm, "~> 0.19.9"},
      {:postgrex, ">= 0.0.0"},
