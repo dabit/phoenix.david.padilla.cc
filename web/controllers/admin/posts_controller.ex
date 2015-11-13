@@ -42,7 +42,7 @@ defmodule Blog.Admin.PostsController do
 
   def edit(conn, %{"id" => id}) do
     post      = Repo.get(Post, id)
-    changeset = Repo.preload(post, :category)
+    changeset = Repo.preload(post, :category, :author)
       |> Post.changeset
 
     categories = Category.options_for_select
