@@ -26,8 +26,7 @@ defmodule Blog.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_blog_key",
-    signing_salt: "TzfhYTPq",
-    encryption_salt: "xZasyo+N"
+    signing_salt: "TzfhYTPq"
 
-  plug :router, Blog.Router
+  plug Blog.Router
 end

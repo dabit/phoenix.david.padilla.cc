@@ -12,7 +12,7 @@ defmodule Blog.Post do
     field :state, :string
     field :publisher_id, :integer
     field :ready_for_review, :boolean
-    field :marked_for_review_at, :datetime
+    field :marked_for_review_at, Ecto.DateTime
     field :cms, :boolean, default: false
     field :html_body, :string
 

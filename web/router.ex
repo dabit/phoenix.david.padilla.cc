@@ -33,11 +33,11 @@ defmodule Blog.Router do
     pipe_through :browser
 
     get "/", PostsController, :index
-    resource "sessions", SessionsController, only: [ :new, :create ]
+    resources "sessions", SessionsController, only: [ :new, :create ], singleton: true
     get "log_out", SessionsController, :delete
     resources "posts", PostsController do
-      resource "state", StateController, only: [:update]
-      resource "preview", PreviewsController, only: [:show]
+      resources "state", StateController, only: [:update], singleton: true
+      resources "preview", PreviewsController, only: [:show], singleton: true
     end
   end
 
