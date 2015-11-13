@@ -4,6 +4,8 @@ exports.config = {
     javascripts: {
       joinTo: {
         'js/app.js': [
+          /deps.phoenix.web.static/,
+          /deps.phoenix_html.web.static/,
           /web.static.vendor/,
           /\/app\//
         ],
