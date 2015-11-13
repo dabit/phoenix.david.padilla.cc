@@ -33,12 +33,12 @@ body {
 }
 
 .jumbotron {
-  background-image: image-url('images/banner.png');
+  background-image: url('/images/banner.png');
   color: white;
 }
 
 .header {
-  background-image: image-url('images/banner.png');
+  background-image: url('/images/banner.png');
   color: white;
   padding-top: 50px;
   padding-bottom: 50px;
