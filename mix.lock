@@ -1,7 +1,7 @@
 %{"bbmustache": {:hex, :bbmustache, "1.0.3"},
   "certifi": {:hex, :certifi, "0.1.1"},
   "combine": {:hex, :combine, "0.5.3"},
-  "comeonin": {:hex, :comeonin, "0.11.3"},
+  "comeonin": {:hex, :comeonin, "2.1.0"},
   "conform": {:hex, :conform, "0.17.0"},
   "cowboy": {:hex, :cowboy, "1.0.3"},
   "cowlib": {:hex, :cowlib, "1.0.1"},

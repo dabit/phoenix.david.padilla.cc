@@ -38,7 +38,7 @@ defmodule Blog.Mixfile do
      {:exrm, "~> 0.19.9"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 1.0.0", only: :dev},
-     {:comeonin, "~> 0.8"},
+     {:comeonin, "~> 2.1"},
      {:cowboy, "~> 1.0"},
      {:timex, "~> 0.19.2"},
      {:xml_builder, "~> 0.0.5"}
