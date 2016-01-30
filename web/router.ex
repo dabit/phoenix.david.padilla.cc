@@ -1,5 +1,5 @@
 defmodule Blog.Router do
-  use Phoenix.Router
+  use Blog.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]

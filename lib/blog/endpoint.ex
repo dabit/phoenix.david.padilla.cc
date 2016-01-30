@@ -3,16 +3,18 @@ defmodule Blog.Endpoint do
 
   # Serve at "/" the given assets from "priv/static" directory
   plug Plug.Static,
-    at: "/", from: :blog,
-    only: ~w(css images js favicon.ico robots.txt)
+    at: "/", from: :blog, gzip: false,
+    only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
+    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
 
+  plug Plug.RequestId
   plug Plug.Logger
 
   plug Plug.Parsers,

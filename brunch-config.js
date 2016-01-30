@@ -4,11 +4,11 @@ exports.config = {
     javascripts: {
       joinTo: {
         'js/app.js': [
-          /web.static.vendor/,
+          /web\/static\/vendor/,
           /\/app\//
         ],
         'js/admin.js': [
-          /web.static.vendor/,
+          /web\/static\/vendor/,
           /\/admin\//
         ]
       },
@@ -22,11 +22,11 @@ exports.config = {
     stylesheets: {
       joinTo: {
         'css/app.css': [
-          /web.static.vendor/,
+          /web\/static\/vendor/,
           /\/app\//
          ],
         'css/admin.css': [
-          /web.static.vendor/,
+          /web\/static\/vendor/,
           /\/admin\//
         ]
       },

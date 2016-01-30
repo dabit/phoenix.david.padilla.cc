@@ -1,5 +1,6 @@
 defmodule Blog.User do
-  use Ecto.Model
+  use Blog.Web, :model
+
   import Comeonin.Bcrypt
 
   schema "users" do
