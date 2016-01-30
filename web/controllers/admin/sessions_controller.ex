@@ -4,16 +4,18 @@ defmodule Blog.Admin.SessionsController do
   plug :put_layout, "admin.html"
 
   def new(conn, _) do
-    render conn, "new.html"
+    changeset = Blog.User.changeset(%Blog.User{})
+    render conn, "new.html", changeset: changeset
   end
 
-  def create(conn, %{"session" => session}) do
-    if user = Blog.User.authenticate?(session["email"], session["password"]) do
+  def create(conn, %{"user" => session}) do
+    changeset = Blog.User.changeset %Blog.User{}, session
+    if user = Blog.User.authenticate?(changeset) do
       conn
         |> put_session(:user_id, user.id)
         |> redirect(to: admin_posts_path(conn, :index))
     end
-    render conn, "new.html", session: session
+    render conn, "new.html", changeset: changeset
   end
 
   def delete(conn, _) do

@@ -1,6 +1,6 @@
 <div class="col-sm-4 col-sm-offset-4">
   <h2>Log In</h2>
-<%= form_for @conn, admin_sessions_path(@conn, :create), [name: :session], fn f-> %>
+<%= form_for @changeset, admin_sessions_path(@conn, :create), fn f-> %>
   <div class="form-group">
     <label>Email</label>
     <br />

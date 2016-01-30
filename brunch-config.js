@@ -4,8 +4,6 @@ exports.config = {
     javascripts: {
       joinTo: {
         'js/app.js': [
-          /deps.phoenix.web.static/,
-          /deps.phoenix_html.web.static/,
           /web.static.vendor/,
           /\/app\//
         ],
@@ -46,9 +44,7 @@ exports.config = {
   // Phoenix paths configuration
   paths: {
     // Which directories to watch
-    watched: ["deps/phoenix/web/static",
-              "deps/phoenix_html/web/static",
-              "web/static",
+    watched: ["web/static",
               "test/static"],
 
     // Where to compile files to
@@ -61,5 +57,10 @@ exports.config = {
       // Do not use ES6 compiler in vendor code
       ignore: [/^(web\/static\/vendor)/]
     }
+  },
+
+  npm: {
+    enabled: true,
+    whitelist: ["phoenix", "phoenix_html"]
   }
 };
