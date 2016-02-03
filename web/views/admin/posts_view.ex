@@ -11,10 +11,10 @@ defmodule Blog.Admin.PostsView do
     else
       "btn-danger"
     end
-    link("Publish", to: admin_posts_state_path(conn, :update, post.id), class: "btn btn-default btn-block #{state_class}", method: :patch, data: [confirm: "WHUT"])
+    link("Publish", to: admin_posts_state_path(conn, :update, post.id), class: "btn btn-default btn-block #{state_class}", method: :patch)
   end
 
   def delete_post_button(conn, post) do
-    link("Delete", to: admin_posts_path(conn, :delete, post.id), class: "btn btn-default btn-block", method: :delete)
+    link("Delete", to: admin_posts_path(conn, :delete, post.id), class: "btn btn-default btn-block", method: :delete, data: [confirm: "Are you sure?"])
   end
 end

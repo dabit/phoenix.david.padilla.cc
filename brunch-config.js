@@ -9,11 +9,15 @@ exports.config = {
         ],
         'js/admin.js': [
           /web\/static\/vendor/,
-          /\/admin\//
+          /node_modules\/phoenix_html\/priv\/static/,
+          /node_modules\/phoenix\/priv\/static/,
+          /^(web\/static\/js\/admin\/)/
         ]
       },
       order: {
         before: [
+          'node_modules/phoenix/priv/static/phoenix.js',
+          'node_modules/phoenix_html/priv/static/phoenix_html.js',
           'web/static/vendor/jquery-2.1.3.js',
           'web/static/vendor/bootstrap.js'
         ]
